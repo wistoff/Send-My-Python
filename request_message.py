@@ -121,8 +121,8 @@ def validate_message(state):
         return True
     else:
         # If the number of complete characters matches the expected length the message is complete
-        #if complete_chars == state['length'] and all(bit == 0 for bit in state["content"][message_length-1]["bits"]) == True:
-        if complete_chars == state['length']:
+        if complete_chars == state['length'] and all(bit == 0 for bit in state["content"][message_length-1]["bits"]) == True:
+        #if complete_chars == state['length']:
             state["length"] = message_length-1
             return True
         else: 
