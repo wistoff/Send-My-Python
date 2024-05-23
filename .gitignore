@@ -1,0 +1,4 @@
+__pycache__
+/anisette-v3-server
+.DS_Store
+auth.json

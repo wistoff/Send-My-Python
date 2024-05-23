@@ -1,0 +1,4 @@
+build/**
+venv/**
+sdkconfig.old
+.DS_Store
