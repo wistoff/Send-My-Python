@@ -15,6 +15,8 @@ from generate_keys import get_both_public_keys
 initialState = { 
     "length": 16,
     "complete": False,
+    "message_id": "",
+    "modem_id": "",
     "first_bit_time": None,
     "last_bit_time": None,
     "message": "",
@@ -35,6 +37,9 @@ def init_state(modem_id, msg_id):
     state = initialState  
     total_key_counter = 0
     character_counter = 0
+
+    state["message_id"] = msg_id
+    state["modem_id"] = modem_id
     
     # Iterate through characters in the state content
     for character in state["content"]:
@@ -124,10 +129,11 @@ def validate_message(state):
             # If the number of complete characters doesn't match the expected length the message is not complete yet
             return False
 
-def update_state(state, time_window_hours, message_id):
+def update_state(state, time_window_hours):
     os.system("printf '\033c'")
     print()
-    print("Receiving Message for ID: ", message_id)
+    print()
+    print("Receiving Message for Modem ID: ", f"0x{state['modem_id']:08x}" , "| Message ID: ", state["message_id"])
     print()
     # loop through every character in the message (initial 16)
     character_counter = 0
@@ -198,7 +204,7 @@ if __name__ == "__main__":
 
     while True:
         if not state["complete"]:
-            updated_state = update_state(state, args.minutes, args.message_id)
+            updated_state = update_state(state, args.minutes)
         else:
             end_time = datetime.datetime.now() 
             duration = end_time - start_time
@@ -210,8 +216,8 @@ if __name__ == "__main__":
 
             print()
             print("MESSAGE COMPLETE:")
-            print("-> Modem ID:", hex(args.modem_id))
-            print("-> Message ID:", args.message_id)
+            print("-> Modem ID:", f"0x{state['modem_id']:08x}")
+            print("-> Message ID:", state["message_id"])
             print("-> Length:", state["length"])
             print("-> Content:", state["message"])
             print("App started at:", start_time.strftime('%Y-%m-%d %H:%M:%S'))

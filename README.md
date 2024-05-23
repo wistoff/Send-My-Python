@@ -10,6 +10,9 @@ The application consists of two parts:
 
 The parts are based on [FindMy]([https://github.com/biemster/FindMy]) by [@biemster](https://github.com/biemster),  [OpenHaystack](https://github.com/seemoo-lab/openhaystack) by [@seemoo-lab](https://github.com/seemoo-lab) and [SendMy](https://github.com/positive-security/send-my) by [@positive-security](https://github.com/positive-security). This README is also based on original repo by [@positive-security](https://github.com/positive-security). 
 
+
+![Screenshot Hello World Message](SendMy-Python_HelloWorld.jpg)
+
 # How it works
 
 Summary: When sending, the data is encoded in the public keys that are broadcasted by the microcontroller. Nearby Apple devices will pick up those broadcasts and forward the data to an Apple backend as part of their location reporting. Those reports can later be retrieved by any device to decode the sent data.
