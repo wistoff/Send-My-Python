@@ -120,8 +120,9 @@ def validate_message(state):
         state["length"] = 16
         return True
     else:
+        end_char = [0, 0, 0, 0, 0, 0, 0, 0]
         # If the number of complete characters matches the expected length the message is complete
-        if complete_chars == state['length'] and all(bit == 0 for bit in state["content"][message_length-1]["bits"]) == True:
+        if complete_chars == state['length'] and state["content"][message_length-1]["bits"] == end_char:
         #if complete_chars == state['length']:
             state["length"] = message_length-1
             return True
@@ -166,10 +167,10 @@ def update_state(state, time_window_hours):
                     #print("this is 1")
         if None not in state["content"][character_counter]["bits"]:
             #print("all bits complete -> decode character")
+            #print(state["content"][character_counter]["bits"])
             character_string = decode_char(state["content"][character_counter]["bits"])
             print(character_string)
             state["content"][character_counter]["char"] = character_string
-            #print(character, end='', flush=True)
 
         else:
             print(state["content"][character_counter]["bits"])
