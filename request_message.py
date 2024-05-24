@@ -120,6 +120,8 @@ def validate_message(state):
         state["length"] = 16
         return True
     else:
+        # Define the end character as 8 bits of 0, this is an empty character, used to signal the end of a message 
+        # INFO still needs to be implemented in the modem code
         end_char = [0, 0, 0, 0, 0, 0, 0, 0]
         # If the number of complete characters matches the expected length the message is complete
         if complete_chars == state['length'] and state["content"][message_length-1]["bits"] == end_char:
