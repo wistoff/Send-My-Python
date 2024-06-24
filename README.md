@@ -1,4 +1,4 @@
-# SendMy Python
+# Send My Python
 
 Send My Python is a Python implementation of the SendMy Code by [@positive-security](https://github.com/positive-security).
 The original [SendMy](https://github.com/positive-security/send-my) Code allows you to upload abritrary data from devices without an internet connection by (ab)using Apple's Find My network. The data is broadcasted via Bluetooth Low Energy and forwarded by nearby Apple devices. In the original code the data is retrieved using a datafetcher and an Apple Mail plugin. This Code uses an anisette-v3-server and Python script to receive the message. 
